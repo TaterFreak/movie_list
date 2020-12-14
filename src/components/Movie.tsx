@@ -16,8 +16,8 @@ const Movie = ({movie}:any) => {
 
   return (
     <Paper>
-      <Link to={`/Movie/${movie.id}`}>
-        <img src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title}/>
+      <Link to={`/movie/${movie.id}`}>
+        <img data-movie src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title}/>
         <div className={classes.titleWrapper}>
             {movie.title}
         </div>

@@ -28,16 +28,18 @@ const MoviePage = (props:any) => {
         <div>
           <img src={`http://image.tmdb.org/t/p/w185/${movie.backdrop_path}`} alt={movie.title}/>
           <img src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title}/>
-          <h1>{movie.title}</h1>
-          <p>{movie.overview}</p>
-          <p>{movie.release_date}</p>
-          <p>{movie.vote_average}</p>
-          <p>{movie.vote_count}</p>
-          <div>
-            {recommendations.map((recommendation:MovieInterface) =>
+          <h1 data-movie-title="">{movie.title}</h1>
+          <p data-movie-overview="">{movie.overview}</p>
+          <p data-movie-release-date="">{movie.release_date}</p>
+          <p data-movie-vote-average="">{movie.vote_average}</p>
+          <p data-movie-vote-count="">{movie.vote_count}</p>
+          {recommendations !== undefined && (
+            <div data-movie-recommendations="">
+              {recommendations.map((recommendation:MovieInterface) =>
                 <Movie movie={recommendation} key={recommendation.id}/>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       ) : (
           <div>

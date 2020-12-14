@@ -20,6 +20,10 @@ const useStyles = createUseStyles({
 const Form = (props:MoviePropsInterface) => {
     const history = useHistory();
     //Use react state for ephemeral state instead of Redux
+    const [error, setError] = useState({
+        error: false,
+        message: '',
+    })
     const [form, setForm] = useState({
         title: ''
     });
@@ -32,13 +36,26 @@ const Form = (props:MoviePropsInterface) => {
 
     const handleSubmit = (event:any) => {
         event.preventDefault()
+
+        if ('' === form.title) {
+            setError({
+                error: true,
+                message: 'Empty search'
+            })
+            return;
+        }
+
         searchMovie(props, form.title)
             .then(() => {
-                history.push('/Search');
+                history.push('/search');
             })
     }
     return (
         <form onSubmit={handleSubmit}>
+            {error.error && (
+              <span data-form-error="true">Error</span>
+            )}
+
             <Input event={handleInputChange} name={"title"} />
             <Button type={"submit"} text={"Search"} />
         </form>

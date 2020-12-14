@@ -26,10 +26,10 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/Movie/:id">
+        <Route path="/movie/:id">
           <MoviePage />
         </Route>
-        <Route path="/Search">
+        <Route path="/search">
           <SearchResult />
         </Route>
       </Switch>
