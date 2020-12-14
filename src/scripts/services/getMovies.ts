@@ -9,7 +9,6 @@ export const getMovies = async (props:MoviePropsInterface, type:string, page:num
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=${page}\n`)
         const data = response.data.results
         props.fetchMovies(data);
-        localStorage.setItem('movies', JSON.stringify(data));
     } catch (err) {
         console.error(err.message);
     }
@@ -30,8 +29,6 @@ export const searchMovie = async (props:MoviePropsInterface, query:string, page:
         console.log('calling api search')
         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=${page}&include_adult=false\n`)
         const data = response.data.results
-        props.fetchMovies(data);
-        localStorage.setItem('movies', JSON.stringify(data));
     } catch (err) {
         console.error(err.message);
     }
